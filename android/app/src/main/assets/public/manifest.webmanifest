@@ -1,0 +1,19 @@
+{
+  "id": "/",
+  "name": "Timetable Reminder",
+  "short_name": "Timetable",
+  "description": "Clean college class schedule tracker with daily timeline, weekly grid, and pre-class reminder notifications.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "theme_color": "#0b100e",
+  "background_color": "#0b100e",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

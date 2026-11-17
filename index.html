@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en" data-palette="sage">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Timetable Reminder</title>
+    <meta name="description" content="Clean college class schedule tracker with daily timeline, weekly grid, and pre-class reminder notifications." />
+    <meta property="og:title" content="Timetable Reminder" />
+    <meta property="og:description" content="Clean college class schedule tracker with daily timeline, weekly grid, and pre-class reminder notifications." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta id="app-theme-color" name="theme-color" content="#0b100e" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..600&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      (function () {
+        try {
+          var raw = localStorage.getItem('timetable_reminder_settings_v1');
+          var parsed = raw ? JSON.parse(raw) : {};
+          var mode = parsed.themeMode || 'system';
+          var palette = parsed.accentPalette || 'sage';
+          var isProMax = Boolean(parsed.glassProMax);
+          var glassMode = isProMax ? 'pro-max' : 'standard';
+          var root = document.documentElement;
+          root.setAttribute('data-palette', palette);
+          root.setAttribute('data-glass', glassMode);
+          var isDark =
+            mode === 'dark' ||
+            (mode !== 'light' &&
+              window.matchMedia &&
+              window.matchMedia('(prefers-color-scheme: dark)').matches);
+          if (isDark) {
+            root.classList.add('dark');
+          } else {
+            root.classList.remove('dark');
+          }
+          var palettes = {
+            sage: { light: '#eef3f0', dark: '#0b100e' },
+            lavender: { light: '#f1eff7', dark: '#0e0d14' },
+            sky: { light: '#edf3f8', dark: '#0b1015' },
+            peach: { light: '#f7f2ed', dark: '#130e0c' },
+            rose: { light: '#f7f0f3', dark: '#130d10' }
+          };
+          var p = palettes[palette] || palettes.sage;
+          var themeHex = isProMax
+            ? (isDark ? '#040914' : '#cce0f2')
+            : (isDark ? p.dark : p.light);
+          root.style.colorScheme = isDark ? 'dark' : 'light';
+          root.style.backgroundColor = themeHex;
+          var meta = document.getElementById('app-theme-color');
+          if (meta) meta.setAttribute('content', themeHex);
+        } catch (_) {}
+      })();
+    </script>
+  </head>
+  <body class="bg-[var(--bg-canvas)] text-slate-900 dark:text-slate-100 antialiased min-h-[100dvh]">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

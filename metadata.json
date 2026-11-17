@@ -1,0 +1,6 @@
+{
+  "name": "Timetable Reminder",
+  "description": "Clean college class schedule tracker with daily timeline, weekly grid, and pre-class reminder notifications.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
