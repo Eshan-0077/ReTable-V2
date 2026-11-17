@@ -23,7 +23,7 @@ jobs:
 
       - name: Install dependencies and build web bundle
         run: |
-          npm install
+          npm install --legacy-peer-deps
           npx vite build
           npx cap sync android
 
